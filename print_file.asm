@@ -43,6 +43,10 @@ _start:
 	cmp qword [bytes_read], 0
 	jg .loop_start
 
+	mov rax, SYS_close
+	mov rdi, qword [file_handle]
+	syscall
+
 	mov rax, SYS_exit
 	mov rdi, 0
 	syscall
